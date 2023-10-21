@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('icons', function (Blueprint $table) {
+        Schema::create('stories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('icon');
-            $table->boolean('is_visible')->default(false);
+            $table->string('headline');
+            $table->string('image')->nullable();
+            $table->longText('description');
+            $table->boolean('is_endorsed')->default(false);
+            $table->date('date');
+            $table->boolean('is_visible');
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('icons');
+        Schema::dropIfExists('stories');
     }
 };

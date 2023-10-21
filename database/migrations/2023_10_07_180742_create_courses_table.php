@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('projects')->default(0);
             $table->unsignedTinyInteger('days')->default(0);
             $table->boolean('is_visible')->default(false);
+            $table->json('icons')->nullable();
             $table->timestamps();
         });
     }

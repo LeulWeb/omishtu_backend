@@ -10,6 +10,13 @@ class Chapter extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'course_id',
+        'title',
+        'description',
+        'is_visible'
+    ];
+
     public function course() : BelongsTo{
         return $this->belongsTo(Course::class);
     }

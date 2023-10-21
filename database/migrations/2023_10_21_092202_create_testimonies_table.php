@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('course_icon', function (Blueprint $table) {
+        Schema::create('testimonies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('icons_id')->constrained('icons')->references('id')->cascadeOnDelete();
-            $table->foreignId('course_id')->constrained('courses')->references('id')->cascadeOnDelete();
+            $table->string('profile')->nullable();
+            $table->string('name');
+            $table->string('role')->nullable();
+            $table->string('link')->nullable();
+            $table->tinyText('testimony');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('course_icon');
+        Schema::dropIfExists('testimonies');
     }
 };
