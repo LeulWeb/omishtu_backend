@@ -36,8 +36,8 @@ class ChapterResource extends Resource
         return $form
             ->schema([
                 Select::make('course_id')->relationship('course','title')->required(),
-                TextInput::make('title')->required()->unique(),
-                RichEditor::make('description')->required()->rule(['min:100']),
+                TextInput::make('title')->required()->unique(ignoreRecord:true),
+                RichEditor::make('description')->required(),
                 Toggle::make('is_visible')->default(true)
             ]);
     }

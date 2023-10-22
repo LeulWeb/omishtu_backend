@@ -70,7 +70,7 @@ class StudentResource extends Resource
                 Tables\Columns\ImageColumn::make('profile')->disk('public')->circular(),
                 Tables\Columns\TextColumn::make('full_name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('phone')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('email')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('email')->unique(ignoreRecord: true)->searchable()->sortable(),
 
             ])
             ->filters([

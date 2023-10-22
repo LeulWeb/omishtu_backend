@@ -42,6 +42,7 @@ class StoryResource extends Resource
                     FileUpload::make('image')->imageEditor()->disk('public')->directory('stories_thumbnail'),
                     Toggle::make('is_visible')->label('Visible')->default(true),
                     Toggle::make('is_endorsed')->label('Endorsed')->helperText('Is this new endorsed'),
+                    Toggle::make('achievement')->label('Achievement')->helperText('Is this new award'),
                     DatePicker::make('date')->default(now()),
 
                 ])
@@ -55,6 +56,7 @@ class StoryResource extends Resource
                 TextColumn::make('headline')->searchable(),
                 TextColumn::make('date')->date(),
                 IconColumn::make('is_endorsed')->boolean()->label('Endorsed'),
+                IconColumn::make('achievement')->boolean()->label('Achievement'),
                 ImageColumn::make('image'),
                 
             ])

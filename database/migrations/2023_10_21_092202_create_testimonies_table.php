@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('role')->nullable();
             $table->string('link')->nullable();
-            $table->tinyText('testimony');
+            $table->text('testimony');
             $table->timestamps();
         });
     }

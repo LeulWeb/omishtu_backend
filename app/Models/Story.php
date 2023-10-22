@@ -15,5 +15,6 @@ class Story extends Model
 'is_endorsed',
 'date',
 'is_visible',
+'achievement'
     ];
 }
