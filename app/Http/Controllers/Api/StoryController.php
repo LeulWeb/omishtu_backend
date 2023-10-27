@@ -13,7 +13,7 @@ class StoryController extends Controller
      */
     public function index()
     {
-        return Story::all();
+        return Story::latest()->get();
     }
 
 

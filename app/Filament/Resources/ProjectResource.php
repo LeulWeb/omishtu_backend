@@ -26,6 +26,8 @@ use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Textarea;
+
 
 class ProjectResource extends Resource
 {
@@ -56,7 +58,7 @@ class ProjectResource extends Resource
                         TextInput::make('title')
                     ->required()
                     ->live(true)
-                    ->unique()
+                    ->unique(ignoreRecord: true)
                     ->afterStateUpdated(function(string $operation, $state, Forms\Set $set){
                         if($operation != 'create'){
                             return ;
@@ -67,7 +69,7 @@ class ProjectResource extends Resource
                     TextInput::make('slug')->disabled()->dehydrated()->required()->unique(Project::class, 'slug', ignoreRecord: true),
     
                     // summary
-                    RichEditor::make('summary'),
+                    Textarea::make('summary'),
                     RichEditor::make('description'),
                     ])
                 ]),
@@ -76,7 +78,7 @@ class ProjectResource extends Resource
                     Section::make('')->schema([
                         //Description
                  FileUpload::make('image')->disk('public')->directory('project')->imageEditor(),
-                     TextInput::make('link')->activeUrl(),
+                     TextInput::make('link')->url(),
                  Toggle::make('is_top')->label('Top project')->default(false),
                  CheckboxList::make('label')
                  ->options([

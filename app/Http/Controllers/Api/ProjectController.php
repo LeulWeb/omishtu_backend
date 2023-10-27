@@ -13,7 +13,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return Project::all();
+        return Project::latest()->get();
     }
     public function show(string $id)
     {
